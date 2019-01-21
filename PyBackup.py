@@ -98,7 +98,7 @@ print("1. Want to backup defaults?".upper())
 print("2. Want to backup your own selected [files/Dirs]? ".upper())
 print("3. Restore selected")
 
-selection = input("[SELECT]>>>>")
+selection = input("[SELECT]>>>>").strip()
 
 
 
