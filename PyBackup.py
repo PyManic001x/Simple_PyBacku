@@ -97,42 +97,55 @@ print(
 print("1. Want to backup defaults?".upper())
 print("2. Want to backup your own selected [files/Dirs]? ".upper())
 print("3. Restore selected")
-
-selection = input("[SELECT]>>>>").strip()
-
+print("[Enter 'Q' for quitting]...")
 
 
-if selection == '1':
-    Backup = Backuping(config_files, Dir_list, "0", "0")
-    Backup.backing_up()
-    Backup.copy_directorys()
 
 
-elif selection == '2':
-    print(
-        "-"*40,
-        "\nEnter the path to backup file or directory",
-        "\nFor quitting INPUT MODE enter 'Q'",
-        "\nThe backup file will be stored in same directory as file/dir itself!"
-    )
-    while True:
-        file_dir = input("[WHAT TO BACKUP]>>>").strip()
-        if file_dir != 'Q':
-            CP_SELECTED = Backuping(config_files, Dir_list, file_dir, "rand")
-            CP_SELECTED.Backup_the_entered_path()
-        else:
-            print("Quitting input mode-----")
-            sys.exit()
+while True:
+
+    selection = input("[SELECT]>>>>")
+
+    if selection == '1':
+        Backup = Backuping(config_files, Dir_list, "0", "0")
+        Backup.backing_up()
+        Backup.copy_directorys()
 
 
-elif selection == '3':
-    print("Enter what directory or file to restore.\nEnter 'Q' to quit...")
-    while True:
-        restore_file = input("[FILE PATH TO RESTORE]>>> ")
-        if restore_file != 'Q':
-            Restore_sec = Backuping(config_files, Dir_list, 0, restore_file)
-            Restore_sec.Restore_selected()
-        else:
-            print("Quitting...")
-            sys.exit()
+    elif selection == '2':
+        print(
+            "-"*40,
+            "\nEnter the path to backup file or directory",
+            "\nFor quitting INPUT MODE enter 'Q'",
+            "\nThe backup file will be stored in same directory as file/dir itself!"
+        )
+        while True:
+            file_dir = input("[WHAT TO BACKUP]>>>").strip()
+            if file_dir != 'Q':
+                CP_SELECTED = Backuping(config_files, Dir_list, file_dir, "rand")
+                CP_SELECTED.Backup_the_entered_path()
+            else:
+                print("Quitting input mode-----")
+                sys.exit()
+
+
+    elif selection == '3':
+        print("Enter what directory or file to restore.\nEnter 'Q' to quit...")
+        while True:
+            restore_file = input("[FILE PATH TO RESTORE]>>> ")
+            if restore_file != 'Q':
+                Restore_sec = Backuping(config_files, Dir_list, 0, restore_file)
+                Restore_sec.Restore_selected()
+            else:
+                print("Quitting...")
+                sys.exit()
+
+    elif selection == 'Q':
+        sys.exit()
+
+    else:
+        print("---Select one of numbers---")
+        pass
+
+
 
